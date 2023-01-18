@@ -1,0 +1,6 @@
+{
+	"name": "integrationRuntimecsv",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
