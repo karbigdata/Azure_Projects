@@ -1,0 +1,9 @@
+{
+	"name": "adfPracticeKar",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "13dccd0d-18de-484c-b298-6ccbb61b6fab",
+		"tenantId": "196e54a6-ef50-440f-b4c2-e7caae5fcad4"
+	}
+}
