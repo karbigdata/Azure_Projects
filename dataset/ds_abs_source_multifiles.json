@@ -1,0 +1,36 @@
+{
+	"name": "ds_abs_source_multifiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_abs",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sourcecontainer": {
+				"type": "string"
+			},
+			"sourcefilename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().sourcefilename",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().sourcecontainer",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
