@@ -264,14 +264,14 @@
 					"storedProcedureParameters": {
 						"CopyActivity_End_Time": {
 							"value": {
-								"value": "@activity('Copy_data_sql_to_blob').ExecuctionEndTime",
+								"value": "@activity('Copy_data_sql_to_blob').ExecutionEndTime",
 								"type": "Expression"
 							},
 							"type": "DateTime"
 						},
 						"CopyActivity_Start_Time": {
 							"value": {
-								"value": "@activity('Copy_data_sql_to_blob').ExecuctionStartTime",
+								"value": "@activity('Copy_data_sql_to_blob').ExecutionStartTime",
 								"type": "Expression"
 							},
 							"type": "DateTime"
