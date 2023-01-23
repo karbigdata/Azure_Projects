@@ -1,0 +1,12 @@
+{
+	"name": "ds_asqldb_source",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "cust"
+		}
+	}
+}

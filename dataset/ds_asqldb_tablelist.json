@@ -1,0 +1,12 @@
+{
+	"name": "ds_asqldb_tablelist",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_asqldb_source_tbls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}

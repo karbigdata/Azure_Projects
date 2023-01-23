@@ -1,0 +1,24 @@
+{
+	"name": "ds_foreach_table_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_asqldb_source_tbls",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sourcetablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().sourcetablename",
+				"type": "Expression"
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"name": "ds_asqldb_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_abs",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "asqldb_out_file",
+				"container": "asqldboutput"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"name": "ds_source_tbl_name",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_asqldb_source_tbls",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"eachsourcetablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().eachsourcetablename",
+				"type": "Expression"
+			}
+		}
+	}
+}
