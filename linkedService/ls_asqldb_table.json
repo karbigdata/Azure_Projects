@@ -1,0 +1,12 @@
+{
+	"name": "ls_asqldb_table",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=asqldb-server-name.database.windows.net;initial catalog=asqldb_server;user id=karsqldbpractice",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDE3Q0E3MUI0LTEyQUEtNDk4Mi1BRDZDLTI4RjM0RDdGMTkzOV85MTU5NzZjMy1hODY0LTQ5ODQtYTVkYS1kYjIwODA3ZGNlYWMiDQp9"
+		}
+	}
+}
