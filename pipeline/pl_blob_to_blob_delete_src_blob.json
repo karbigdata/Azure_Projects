@@ -1,9 +1,9 @@
 {
-	"name": "pl_data_move_b_to_b_multifiles",
+	"name": "pl_blob_to_blob_delete_src_blob",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_DS_Source_Sink_Multifiles",
+				"name": "Copy data from blob to blob and delete src blob",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -50,42 +50,59 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_abs_source_multifiles",
-						"type": "DatasetReference",
-						"parameters": {
-							"sourcecontainer": {
-								"value": "@pipeline().parameters.inputdir",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "DS_blob_storagekar",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_abs_sink_multifiles",
-						"type": "DatasetReference",
-						"parameters": {
-							"sinkcontainer": {
-								"value": "@pipeline().parameters.outputdir",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "ds_sink_storagekar_blob",
+						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Delete src blob",
+				"type": "Delete",
+				"dependsOn": [
+					{
+						"activity": "Copy data from blob to blob and delete src blob",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_blob_stroage_delete",
+						"type": "DatasetReference"
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "LS_storagekar_blob",
+							"type": "LinkedServiceReference"
+						},
+						"path": "container-1"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
 			}
 		],
-		"parameters": {
-			"inputdir": {
-				"type": "string",
-				"defaultValue": "input"
-			},
-			"outputdir": {
-				"type": "string",
-				"defaultValue": "output"
-			}
-		},
 		"folder": {
-			"name": "old_pipelines"
+			"name": "ITBrotherProj"
 		},
 		"annotations": []
 	}

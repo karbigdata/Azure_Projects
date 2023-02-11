@@ -1,0 +1,21 @@
+{
+	"name": "ds_sink_storagekar_blob",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_storagekar_blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "outputdir"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

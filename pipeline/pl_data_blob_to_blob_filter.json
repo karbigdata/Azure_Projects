@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -277,6 +278,9 @@
 			"csvsink": {
 				"type": "string"
 			}
+		},
+		"folder": {
+			"name": "old_pipelines"
 		},
 		"annotations": []
 	}

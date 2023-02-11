@@ -98,6 +98,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "old_pipelines"
+		},
 		"annotations": []
 	}
 }

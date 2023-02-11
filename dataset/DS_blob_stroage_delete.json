@@ -1,0 +1,17 @@
+{
+	"name": "DS_blob_stroage_delete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_storagekar_blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "inputdir"
+			}
+		}
+	}
+}

@@ -55,6 +55,9 @@
 				]
 			}
 		],
+		"folder": {
+			"name": "old_pipelines"
+		},
 		"annotations": [],
 		"lastPublishTime": "2023-02-10T03:34:14Z"
 	},

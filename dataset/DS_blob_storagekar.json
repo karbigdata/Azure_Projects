@@ -1,0 +1,22 @@
+{
+	"name": "DS_blob_storagekar",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_storagekar_blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "sample_csv_data.csv",
+				"container": "inputdir"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

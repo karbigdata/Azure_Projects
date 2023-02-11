@@ -80,6 +80,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -194,6 +195,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "old_pipelines"
+		},
 		"annotations": []
 	}
 }

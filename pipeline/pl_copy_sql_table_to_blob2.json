@@ -429,6 +429,9 @@
 				"defaultValue": "custdata.json"
 			}
 		},
+		"folder": {
+			"name": "old_pipelines"
+		},
 		"annotations": []
 	}
 }
