@@ -111,32 +111,6 @@
 										"typeProperties": {
 											"waitTimeInSeconds": 5
 										}
-									},
-									{
-										"name": "WebHook1",
-										"type": "WebHook",
-										"dependsOn": [
-											{
-												"activity": "Wait1",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
-										"userProperties": [],
-										"typeProperties": {
-											"url": {
-												"value": "@pipeline().parameters.teamwebhookurl",
-												"type": "Expression"
-											},
-											"method": "POST",
-											"body": {
-												"value": "@json(pipeline().parameters.message)",
-												"type": "Expression"
-											},
-											"timeout": "00:10:00",
-											"disableCertValidation": false
-										}
 									}
 								],
 								"ifTrueActivities": [
@@ -190,6 +164,11 @@
 			"message": {
 				"type": "string",
 				"defaultValue": "file size is less than 10b"
+			}
+		},
+		"variables": {
+			"messahe1": {
+				"type": "String"
 			}
 		},
 		"annotations": []
