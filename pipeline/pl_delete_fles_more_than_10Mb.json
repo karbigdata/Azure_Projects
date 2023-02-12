@@ -64,9 +64,18 @@
 							"typeProperties": {
 								"dataset": {
 									"referenceName": "DelimitedText6",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"fileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								},
-								"fieldList": [],
+								"fieldList": [
+									"itemName",
+									"size"
+								],
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"enablePartitionDiscovery": false
@@ -75,11 +84,114 @@
 									"type": "DelimitedTextReadSettings"
 								}
 							}
+						},
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Get Metadata2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@greater(activity('Get Metadata2').output.size,10)",
+									"type": "Expression"
+								},
+								"ifFalseActivities": [
+									{
+										"name": "Wait1",
+										"type": "Wait",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"waitTimeInSeconds": 5
+										}
+									},
+									{
+										"name": "WebHook1",
+										"type": "WebHook",
+										"dependsOn": [
+											{
+												"activity": "Wait1",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"userProperties": [],
+										"typeProperties": {
+											"url": {
+												"value": "@pipeline().parameters.teamwebhookurl",
+												"type": "Expression"
+											},
+											"method": "POST",
+											"body": {
+												"value": "@json(pipeline().parameters.message)",
+												"type": "Expression"
+											},
+											"timeout": "00:10:00",
+											"disableCertValidation": false
+										}
+									}
+								],
+								"ifTrueActivities": [
+									{
+										"name": "Delete1",
+										"type": "Delete",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"dataset": {
+												"referenceName": "Binary1",
+												"type": "DatasetReference",
+												"parameters": {
+													"fileName": {
+														"value": "@activity('Get Metadata2').output.itemName",
+														"type": "Expression"
+													}
+												}
+											},
+											"enableLogging": false,
+											"storeSettings": {
+												"type": "AzureBlobStorageReadSettings",
+												"recursive": true,
+												"enablePartitionDiscovery": false
+											}
+										}
+									}
+								]
+							}
 						}
 					]
 				}
 			}
 		],
+		"parameters": {
+			"teamwebhookurl": {
+				"type": "string",
+				"defaultValue": "https://lntinfotech.webhook.office.com/webhookb2/bed006fc-5e66-4274-918d-63a3d112864d@02aa9fc1-18bc-4798-a020-e01c854dd434/IncomingWebhook/824aeae0c4d744cb8e74cf212ebc2150/5398bb6b-c126-4743-896d-47c6eb44e2cd"
+			},
+			"name": {
+				"type": "string",
+				"defaultValue": "test"
+			},
+			"message": {
+				"type": "string",
+				"defaultValue": "file size is less than 10b"
+			}
+		},
 		"annotations": []
 	}
 }
